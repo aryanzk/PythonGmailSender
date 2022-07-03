@@ -43,8 +43,8 @@ def hello_world():
     return "Hello world!"
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":                                             #edit email body
     send_test_mail('''
-EMAIL BODYY
+EMAIL BODYY 
         ''')
     app.run('0.0.0.0', port=5000)
