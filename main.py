@@ -8,8 +8,8 @@ app = Flask(__name__)
 
 
 def send_test_mail(body):
-    sender_email = "ENTER YOUR NAME"
-    test = ["Enter Emails HERE","@something.com"]
+    sender_email = "ENTER YOUR NAME"                                 #display name to show who sent the email 
+    test = ["Enter Emails HERE","@something.com"]                    #enter emails in a list
     for items in test:
         receiver_email = items
 
@@ -20,11 +20,11 @@ def send_test_mail(body):
 
         msgText = MIMEText('<b>%s</b>' % (body), 'html')
         msg.attach(msgText)
-
+                                                                    #enter file names here
         pdf = MIMEApplication(open("ENTER FILENAME HERE.pdf", 'rb').read())
         pdf.add_header('Content-Disposition', 'attachment', filename="ENTER FILENAME HERE.pdf")
         msg.attach(pdf)
-
+                                                                    
         pdf2 = MIMEApplication(open("ENTER FILENAME HERE.pdf", 'rb').read())
         pdf2.add_header('Content-Disposition', 'attachment',
                         filename="ENTER FILENAME HERE.pdf")
@@ -33,7 +33,7 @@ def send_test_mail(body):
         with smtplib.SMTP('smtp.gmail.com', 587) as smtpObj:
             smtpObj.ehlo()
             smtpObj.starttls()
-            smtpObj.login("YOUR_EMAIL@gmail.com", "YOUR PASS")
+            smtpObj.login("YOUR_EMAIL@gmail.com", "YOUR PASS")         #enter email and password
             smtpObj.sendmail(sender_email, receiver_email, msg.as_string())
         print("done with", items)
 
